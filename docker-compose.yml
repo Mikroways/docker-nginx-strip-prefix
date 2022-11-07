@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nginx-lb:
+    build: .
+    ports: 
+      - 7070:7070
+    environment:
+      UPSTREAM_PROTOCOL: https
+      UPSTREAM_SERVER: httpbin.org
+      UPSTREAM_PORT: 443
+      LOCATION_REGEX: '^/una/prueba/a/eliminar(/?)(.*)$'
+      PATH_URI: '/anything/$2'

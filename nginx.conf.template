@@ -1,0 +1,15 @@
+upstream myserver {
+  server $UPSTREAM_SERVER:$UPSTREAM_PORT fail_timeout=0 max_fails=0;
+}
+server {
+
+  listen 7070;
+  client_max_body_size 0;
+
+  location ~ $LOCATION_REGEX {
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_set_header X-Forwarded-Proto $scheme;
+     proxy_set_header Host $http_host;
+     proxy_pass $UPSTREAM_PROTOCOL://myserver/$PATH_URI;
+  }
+}
