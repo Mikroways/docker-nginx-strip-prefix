@@ -3,8 +3,6 @@ upstream myserver {
 }
 server {
 
-  root /app;
-
   listen 7070;
   client_max_body_size 0;
 
@@ -13,5 +11,11 @@ server {
      proxy_set_header X-Forwarded-Proto $scheme;
      proxy_set_header Host $http_host;
      proxy_pass $UPSTREAM_PROTOCOL://myserver/$PATH_URI;
+  }
+
+  location /_healthcheck {
+    access_log off;
+    log_not_found off;
+    return 200;
   }
 }

@@ -5,6 +5,5 @@ ENV UPSTREAM_PROTOCOL=http \
     UPSTREAM_SERVER=localhost \
     UPSTREAM_PORT=8080
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
-RUN echo "ok" > /app/_healthcheck
 USER nginx
 EXPOSE 7070
