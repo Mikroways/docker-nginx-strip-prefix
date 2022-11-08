@@ -3,6 +3,8 @@ upstream myserver {
 }
 server {
 
+  root /app;
+
   listen 7070;
   client_max_body_size 0;
 

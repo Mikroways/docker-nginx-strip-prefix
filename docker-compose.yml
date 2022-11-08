@@ -9,5 +9,5 @@ services:
       UPSTREAM_PROTOCOL: https
       UPSTREAM_SERVER: httpbin.org
       UPSTREAM_PORT: 443
-      LOCATION_REGEX: '^/una/prueba/a/eliminar(/?)(.*)$'
-      PATH_URI: '/anything/$2'
+      LOCATION_REGEX: "^/una/prueba/a/eliminar(/?)(.*)$$"
+      PATH_URI: "/anything/$$2"
